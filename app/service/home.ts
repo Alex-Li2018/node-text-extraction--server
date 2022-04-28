@@ -6,10 +6,11 @@ import { Service } from 'egg';
 export default class Test extends Service {
 
   /**
-   * sayHi to you
-   * @param name - your name
+   * extract解析docx
+   * @param file
+   * @param options
    */
-  public async sayHi(name: string) {
-    return `hi, ${name}`;
+  public docxExtract(file, options) {
+
   }
 }
