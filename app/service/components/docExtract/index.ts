@@ -23,7 +23,7 @@ export const defaultOptions: Options = {
   trimXmlDeclaration: true,
 };
 
-export function praseAsync(data: Blob | any, userOptions: Options | any): Promise<any> {
-  const ops = { ...defaultOptions, ...userOptions };
+export function praseAsync(data: Blob | any): Promise<any> {
+  const ops = { ...defaultOptions };
   return WordDocument.load(data, ops);
 }

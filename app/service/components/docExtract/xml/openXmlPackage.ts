@@ -1,7 +1,7 @@
 import * as JSZip from 'jszip';
-import { parseXmlString, XmlParser } from './parse/xmlParser';
+// import { parseXmlString, XmlParser } from './parse/xmlParser';
 import { splitPath } from '../utils';
-import { parseRelationships, Relationship } from './relationship';
+// import { parseRelationships, Relationship } from './relationship';
 
 export interface OpenXmlPackageOptions {
   trimXmlDeclaration: boolean,
@@ -9,7 +9,7 @@ export interface OpenXmlPackageOptions {
 }
 
 export class OpenXmlPackage {
-  xmlParser: XmlParser = new XmlParser();
+  // xmlParser: XmlParser = new XmlParser();
 
   constructor(private _zip: JSZip, public options: OpenXmlPackageOptions) {
   }
@@ -38,7 +38,7 @@ export class OpenXmlPackage {
     return this.get(path)?.async(type) ?? Promise.resolve(null);
   }
 
-  loadRelationships(path = ''): Promise<Relationship[]> {
+  loadRelationships(path = ''): Promise<[]> {
     let relsPath = '_rels/.rels';
 
     if (path != null) {
@@ -47,13 +47,10 @@ export class OpenXmlPackage {
     }
     // 进入relationship的函数
     return this.load(relsPath)
-      .then(txt => (txt ? parseRelationships((this.parseXmlDocument(txt).firstElementChild) as Element, this.xmlParser) : []));
-  }
-
-  /** @internal */
-  parseXmlDocument(txt: string): Document {
-    // 返回domTree
-    return parseXmlString(txt, this.options.trimXmlDeclaration);
+      .then(txt => {
+        console.log(txt);
+        return [];
+      });
   }
 }
 
