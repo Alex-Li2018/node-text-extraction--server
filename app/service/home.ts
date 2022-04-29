@@ -1,4 +1,5 @@
 import { Service } from 'egg';
+import { praseAsync } from './components/docExtract';
 
 /**
  * Test Service
@@ -10,7 +11,7 @@ export default class Test extends Service {
    * @param file
    * @param options
    */
-  public docxExtract(file, options) {
-
+  public async docxExtract(file, options) {
+    await praseAsync(file, options);
   }
 }

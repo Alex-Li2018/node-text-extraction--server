@@ -19,7 +19,7 @@ export default class HomeController extends Controller {
         console.log('mime: ' + file.mime);
         console.log('tmp filepath: ' + file.filepath);
 
-        await ctx.service.home.docxExtract(file);
+        await ctx.service.home.docxExtract(file, {});
       }
     } finally {
       // 需要删除临时文件

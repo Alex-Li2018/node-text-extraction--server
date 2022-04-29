@@ -7,117 +7,141 @@ type AnyFunc<T = any> = (...args: any[]) => T;
 type CanExportFunc = AnyFunc<Promise<any>> | AnyFunc<IterableIterator<any>>;
 type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? ReturnType<T> : T> = U extends AnyClass ? InstanceType<U> : U;
 import ExportHome from '../../../app/service/home';
-import ExportComponentsDocxExtractDocumentParser from '../../../app/service/components/docxExtract/document-parser';
-import ExportComponentsDocxExtractHtmlRenderer from ../../../app/service/components/docxExtracter';
-import ExportComponentsDocxExtractIndex from '../../../app/service/components/docxExtract/index';
-import ExportComponentsDocxExtractJavascript from '../../../app/service/components/docxExtract/javascript';
-import ExportComponentsDocxExtractUtils from '../../../app/service/components/docxExtract/utils';
-import ExportComponentsDocxExtractWordDocument from '../../../app/service/components/docxExtract/word-document';
-import ExportComponentsDocxExtractCommonOpenXmlPackage from '../../../app/service/components/docxExtract/common/open-xml-package';
-import ExportComponentsDocxExtractCommonPart from '../../../app/service/components/docxExtract/common/part';
-import ExportComponentsDocxExtractCommonRelationship from '../../../app/service/components/docxExtract/common/relationship';
-import ExportComponentsDocxExtractDocumentBookmarks from '../../../app/service/components/docxExtract/document/bookmarks';
-import ExportComponentsDocxExtractDocumentBorder from '../../../app/service/components/docxExtract/document/border';
-import ExportComponentsDocxExtractDocumentCommon from '../../../app/service/components/docxExtract/document/common';
-import ExportComponentsDocxExtractDocumentDocumentPart from '../../../app/service/components/docxExtract/document/document-part';
-import ExportComponentsDocxExtractDocumentDocument from '../../../app/service/components/docxExtract/document/document';
-import ExportComponentsDocxExtractDocumentDom from '../../../app/service/components/docxExtract/document/dom';
-import ExportComponentsDocxExtractDocumentFields from '../../../app/service/components/docxExtract/document/fields';
-import ExportComponentsDocxExtractDocumentLineSpacing from '../../../app/service/components/docxExtract/document/line-spacing';
-import ExportComponentsDocxExtractDocumentParagraph from '../../../app/service/components/docxExtract/document/paragraph';
-import ExportComponentsDocxExtractDocumentRun from '../../../app/service/components/docxExtract/document/run';
-import ExportComponentsDocxExtractDocumentSection from '../../../app/service/components/docxExtract/document/section';
-import ExportComponentsDocxExtractDocumentStyle from '../../../app/service/components/docxExtract/document/style';
-import ExportComponentsDocxExtractDocumentVector from '../../../app/service/components/docxExtract/document/vector';
-import ExportComponentsDocxExtractDocumentPropsCorePropsPart from '../../../app/service/components/docxExtract/document-props/core-props-part';
-import ExportComponentsDocxExtractDocumentPropsCoreProps from '../../../app/service/components/docxExtract/document-props/core-props';
-import ExportComponentsDocxExtractDocumentPropsCustomPropsPart from '../../../app/service/components/docxExtract/document-props/custom-props-part';
-import ExportComponentsDocxExtractDocumentPropsCustomProps from '../../../app/service/components/docxExtract/document-props/custom-props';
-import ExportComponentsDocxExtractDocumentPropsExtendedPropsPart from '../../../app/service/components/docxExtract/document-props/extended-props-part';
-import ExportComponentsDocxExtractDocumentPropsExtendedProps from '../../../app/service/components/docxExtract/document-props/extended-props';
-import ExportComponentsDocxExtractFontTableFontTable from '../../../app/service/components/docxExtract/font-table/font-table';
-import ExportComponentsDocxExtractFontTableFonts from '../../../app/service/components/docxExtract/font-table/fonts';
-import ExportComponentsDocxExtractHeaderFooterElements from '../../../app/service/components/docxExtract/header-footer/elements';
-import ExportComponentsDocxExtractHeaderFooterParts from '../../../app/service/components/docxExtract/header-footer/parts';
-import ExportComponentsDocxExtractNotesElements from '../../../app/service/components/docxExtract/notes/elements';
-import ExportComponentsDocxExtractNotesParts from '../../../app/service/components/docxExtract/notes/parts';
-import ExportComponentsDocxExtractNumberingNumberingPart from '../../../app/service/components/docxExtract/numbering/numbering-part';
-import ExportComponentsDocxExtractNumberingNumbering from '../../../app/service/components/docxExtract/numbering/numbering';
-import ExportComponentsDocxExtractParserXmlParser from '../../../app/service/components/docxExtract/parser/xml-parser';
-import ExportComponentsDocxExtractSettingsSettingsPart from '../../../app/service/components/docxExtract/settings/settings-part';
-import ExportComponentsDocxExtractSettingsSettings from '../../../app/service/components/docxExtract/settings/settings';
-import ExportComponentsDocxExtractStylesStylesPart from '../../../app/service/components/docxExtract/styles/styles-part';
-import ExportComponentsDocxExtractThemeThemePart from '../../../app/service/components/docxExtract/theme/theme-part';
-import ExportComponentsDocxExtractThemeTheme from '../../../app/service/components/docxExtract/theme/theme';
+import ExportComponentsDocExtractIndex from '../../../app/service/components/docExtract/index';
+import ExportComponentsDocExtractWordDocument from '../../../app/service/components/docExtract/wordDocument';
+import ExportComponentsDocxExtractCopyDocumentParser from '../../../app/service/components/docxExtractCopy/document-parser';
+import ExportComponentsDocxExtractCopyDocxExtract from '../../../app/service/components/docxExtractCopy/docxExtract';
+import ExportComponentsDocxExtractCopyHtmlRenderer from '../../../app/service/components/docxExtractCopy/html-renderer';
+import ExportComponentsDocxExtractCopyJavascript from '../../../app/service/components/docxExtractCopy/javascript';
+import ExportComponentsDocxExtractCopyUtils from '../../../app/service/components/docxExtractCopy/utils';
+import ExportComponentsDocxExtractCopyWordDocument from '../../../app/service/components/docxExtractCopy/word-document';
+import ExportComponentsDocExtractDocumentCommon from '../../../app/service/components/docExtract/document/common';
+import ExportComponentsDocExtractUtilsIndex from '../../../app/service/components/docExtract/utils/index';
+import ExportComponentsDocExtractXmlOpenXmlPackage from '../../../app/service/components/docExtract/xml/openXmlPackage';
+import ExportComponentsDocExtractXmlRelationship from '../../../app/service/components/docExtract/xml/relationship';
+import ExportComponentsDocxExtractCopyCommonOpenXmlPackage from '../../../app/service/components/docxExtractCopy/common/open-xml-package';
+import ExportComponentsDocxExtractCopyCommonPart from '../../../app/service/components/docxExtractCopy/common/part';
+import ExportComponentsDocxExtractCopyCommonRelationship from '../../../app/service/components/docxExtractCopy/common/relationship';
+import ExportComponentsDocxExtractCopyDocumentBookmarks from '../../../app/service/components/docxExtractCopy/document/bookmarks';
+import ExportComponentsDocxExtractCopyDocumentBorder from '../../../app/service/components/docxExtractCopy/document/border';
+import ExportComponentsDocxExtractCopyDocumentCommon from '../../../app/service/components/docxExtractCopy/document/common';
+import ExportComponentsDocxExtractCopyDocumentDocumentPart from '../../../app/service/components/docxExtractCopy/document/document-part';
+import ExportComponentsDocxExtractCopyDocumentDocument from '../../../app/service/components/docxExtractCopy/document/document';
+import ExportComponentsDocxExtractCopyDocumentDom from '../../../app/service/components/docxExtractCopy/document/dom';
+import ExportComponentsDocxExtractCopyDocumentFields from '../../../app/service/components/docxExtractCopy/document/fields';
+import ExportComponentsDocxExtractCopyDocumentLineSpacing from '../../../app/service/components/docxExtractCopy/document/line-spacing';
+import ExportComponentsDocxExtractCopyDocumentParagraph from '../../../app/service/components/docxExtractCopy/document/paragraph';
+import ExportComponentsDocxExtractCopyDocumentRun from '../../../app/service/components/docxExtractCopy/document/run';
+import ExportComponentsDocxExtractCopyDocumentSection from '../../../app/service/components/docxExtractCopy/document/section';
+import ExportComponentsDocxExtractCopyDocumentStyle from '../../../app/service/components/docxExtractCopy/document/style';
+import ExportComponentsDocxExtractCopyDocumentVector from '../../../app/service/components/docxExtractCopy/document/vector';
+import ExportComponentsDocxExtractCopyDocumentPropsCorePropsPart from '../../../app/service/components/docxExtractCopy/document-props/core-props-part';
+import ExportComponentsDocxExtractCopyDocumentPropsCoreProps from '../../../app/service/components/docxExtractCopy/document-props/core-props';
+import ExportComponentsDocxExtractCopyDocumentPropsCustomPropsPart from '../../../app/service/components/docxExtractCopy/document-props/custom-props-part';
+import ExportComponentsDocxExtractCopyDocumentPropsCustomProps from '../../../app/service/components/docxExtractCopy/document-props/custom-props';
+import ExportComponentsDocxExtractCopyDocumentPropsExtendedPropsPart from '../../../app/service/components/docxExtractCopy/document-props/extended-props-part';
+import ExportComponentsDocxExtractCopyDocumentPropsExtendedProps from '../../../app/service/components/docxExtractCopy/document-props/extended-props';
+import ExportComponentsDocxExtractCopyFontTableFontTable from '../../../app/service/components/docxExtractCopy/font-table/font-table';
+import ExportComponentsDocxExtractCopyFontTableFonts from '../../../app/service/components/docxExtractCopy/font-table/fonts';
+import ExportComponentsDocxExtractCopyHeaderFooterElements from '../../../app/service/components/docxExtractCopy/header-footer/elements';
+import ExportComponentsDocxExtractCopyHeaderFooterParts from '../../../app/service/components/docxExtractCopy/header-footer/parts';
+import ExportComponentsDocxExtractCopyNotesElements from '../../../app/service/components/docxExtractCopy/notes/elements';
+import ExportComponentsDocxExtractCopyNotesParts from '../../../app/service/components/docxExtractCopy/notes/parts';
+import ExportComponentsDocxExtractCopyNumberingNumberingPart from '../../../app/service/components/docxExtractCopy/numbering/numbering-part';
+import ExportComponentsDocxExtractCopyNumberingNumbering from '../../../app/service/components/docxExtractCopy/numbering/numbering';
+import ExportComponentsDocxExtractCopyParserXmlParser from '../../../app/service/components/docxExtractCopy/parser/xml-parser';
+import ExportComponentsDocxExtractCopySettingsSettingsPart from '../../../app/service/components/docxExtractCopy/settings/settings-part';
+import ExportComponentsDocxExtractCopySettingsSettings from '../../../app/service/components/docxExtractCopy/settings/settings';
+import ExportComponentsDocxExtractCopyStylesStylesPart from '../../../app/service/components/docxExtractCopy/styles/styles-part';
+import ExportComponentsDocxExtractCopyThemeThemePart from '../../../app/service/components/docxExtractCopy/theme/theme-part';
+import ExportComponentsDocxExtractCopyThemeTheme from '../../../app/service/components/docxExtractCopy/theme/theme';
+import ExportComponentsDocExtractXmlParseXmlParser from '../../../app/service/components/docExtract/xml/parse/xmlParser';
 
 declare module 'egg' {
   interface IService {
     home: AutoInstanceType<typeof ExportHome>;
     components: {
-      docxExtract: {
-        documentParser: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentParser>;
-        htmlRenderer: AutoInstanceType<typeof ExportComponentsDocxExtractHtmlRenderer>;
-        index: AutoInstanceType<typeof ExportComponentsDocxExtractIndex>;
-        javascript: AutoInstanceType<typeof ExportComponentsDocxExtractJavascript>;
-        utils: AutoInstanceType<typeof ExportComponentsDocxExtractUtils>;
-        wordDocument: AutoInstanceType<typeof ExportComponentsDocxExtractWordDocument>;
+      docExtract: {
+        index: AutoInstanceType<typeof ExportComponentsDocExtractIndex>;
+        wordDocument: AutoInstanceType<typeof ExportComponentsDocExtractWordDocument>;
+        document: {
+          common: AutoInstanceType<typeof ExportComponentsDocExtractDocumentCommon>;
+        }
+        utils: {
+          index: AutoInstanceType<typeof ExportComponentsDocExtractUtilsIndex>;
+        }
+        xml: {
+          openXmlPackage: AutoInstanceType<typeof ExportComponentsDocExtractXmlOpenXmlPackage>;
+          relationship: AutoInstanceType<typeof ExportComponentsDocExtractXmlRelationship>;
+          parse: {
+            xmlParser: AutoInstanceType<typeof ExportComponentsDocExtractXmlParseXmlParser>;
+          }
+        }
+      }
+      docxExtractCopy: {
+        documentParser: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentParser>;
+        docxExtract: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocxExtract>;
+        htmlRenderer: AutoInstanceType<typeof ExportComponentsDocxExtractCopyHtmlRenderer>;
+        javascript: AutoInstanceType<typeof ExportComponentsDocxExtractCopyJavascript>;
+        utils: AutoInstanceType<typeof ExportComponentsDocxExtractCopyUtils>;
+        wordDocument: AutoInstanceType<typeof ExportComponentsDocxExtractCopyWordDocument>;
         common: {
-          openXmlPackage: AutoInstanceType<typeof ExportComponentsDocxExtractCommonOpenXmlPackage>;
-          part: AutoInstanceType<typeof ExportComponentsDocxExtractCommonPart>;
-          relationship: AutoInstanceType<typeof ExportComponentsDocxExtractCommonRelationship>;
+          openXmlPackage: AutoInstanceType<typeof ExportComponentsDocxExtractCopyCommonOpenXmlPackage>;
+          part: AutoInstanceType<typeof ExportComponentsDocxExtractCopyCommonPart>;
+          relationship: AutoInstanceType<typeof ExportComponentsDocxExtractCopyCommonRelationship>;
         }
         document: {
-          bookmarks: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentBookmarks>;
-          border: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentBorder>;
-          common: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentCommon>;
-          documentPart: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentDocumentPart>;
-          document: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentDocument>;
-          dom: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentDom>;
-          fields: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentFields>;
-          lineSpacing: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentLineSpacing>;
-          paragraph: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentParagraph>;
-          run: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentRun>;
-          section: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentSection>;
-          style: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentStyle>;
-          vector: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentVector>;
+          bookmarks: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentBookmarks>;
+          border: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentBorder>;
+          common: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentCommon>;
+          documentPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentDocumentPart>;
+          document: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentDocument>;
+          dom: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentDom>;
+          fields: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentFields>;
+          lineSpacing: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentLineSpacing>;
+          paragraph: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentParagraph>;
+          run: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentRun>;
+          section: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentSection>;
+          style: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentStyle>;
+          vector: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentVector>;
         }
         documentProps: {
-          corePropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsCorePropsPart>;
-          coreProps: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsCoreProps>;
-          customPropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsCustomPropsPart>;
-          customProps: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsCustomProps>;
-          extendedPropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsExtendedPropsPart>;
-          extendedProps: AutoInstanceType<typeof ExportComponentsDocxExtractDocumentPropsExtendedProps>;
+          corePropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsCorePropsPart>;
+          coreProps: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsCoreProps>;
+          customPropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsCustomPropsPart>;
+          customProps: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsCustomProps>;
+          extendedPropsPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsExtendedPropsPart>;
+          extendedProps: AutoInstanceType<typeof ExportComponentsDocxExtractCopyDocumentPropsExtendedProps>;
         }
         fontTable: {
-          fontTable: AutoInstanceType<typeof ExportComponentsDocxExtractFontTableFontTable>;
-          fonts: AutoInstanceType<typeof ExportComponentsDocxExtractFontTableFonts>;
+          fontTable: AutoInstanceType<typeof ExportComponentsDocxExtractCopyFontTableFontTable>;
+          fonts: AutoInstanceType<typeof ExportComponentsDocxExtractCopyFontTableFonts>;
         }
         headerFooter: {
-          elements: AutoInstanceType<typeof ExportComponentsDocxExtractHeaderFooterElements>;
-          parts: AutoInstanceType<typeof ExportComponentsDocxExtractHeaderFooterParts>;
+          elements: AutoInstanceType<typeof ExportComponentsDocxExtractCopyHeaderFooterElements>;
+          parts: AutoInstanceType<typeof ExportComponentsDocxExtractCopyHeaderFooterParts>;
         }
         notes: {
-          elements: AutoInstanceType<typeof ExportComponentsDocxExtractNotesElements>;
-          parts: AutoInstanceType<typeof ExportComponentsDocxExtractNotesParts>;
+          elements: AutoInstanceType<typeof ExportComponentsDocxExtractCopyNotesElements>;
+          parts: AutoInstanceType<typeof ExportComponentsDocxExtractCopyNotesParts>;
         }
         numbering: {
-          numberingPart: AutoInstanceType<typeof ExportComponentsDocxExtractNumberingNumberingPart>;
-          numbering: AutoInstanceType<typeof ExportComponentsDocxExtractNumberingNumbering>;
+          numberingPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyNumberingNumberingPart>;
+          numbering: AutoInstanceType<typeof ExportComponentsDocxExtractCopyNumberingNumbering>;
         }
         parser: {
-          xmlParser: AutoInstanceType<typeof ExportComponentsDocxExtractParserXmlParser>;
+          xmlParser: AutoInstanceType<typeof ExportComponentsDocxExtractCopyParserXmlParser>;
         }
         settings: {
-          settingsPart: AutoInstanceType<typeof ExportComponentsDocxExtractSettingsSettingsPart>;
-          settings: AutoInstanceType<typeof ExportComponentsDocxExtractSettingsSettings>;
+          settingsPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopySettingsSettingsPart>;
+          settings: AutoInstanceType<typeof ExportComponentsDocxExtractCopySettingsSettings>;
         }
         styles: {
-          stylesPart: AutoInstanceType<typeof ExportComponentsDocxExtractStylesStylesPart>;
+          stylesPart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyStylesStylesPart>;
         }
         theme: {
-          themePart: AutoInstanceType<typeof ExportComponentsDocxExtractThemeThemePart>;
-          theme: AutoInstanceType<typeof ExportComponentsDocxExtractThemeTheme>;
+          themePart: AutoInstanceType<typeof ExportComponentsDocxExtractCopyThemeThemePart>;
+          theme: AutoInstanceType<typeof ExportComponentsDocxExtractCopyThemeTheme>;
         }
       }
     }
