@@ -10,6 +10,7 @@ import ExportWordParse from '../../../app/service/wordParse';
 import ExportTextParseDocumentParser from '../../../app/service/text-parse/document-parser';
 import ExportTextParseDocxParse from '../../../app/service/text-parse/docx-parse';
 import ExportTextParseFormatParentWordData from '../../../app/service/text-parse/formatParentWordData';
+import ExportTextParseTest from '../../../app/service/text-parse/test';
 import ExportTextParseUtils from '../../../app/service/text-parse/utils';
 import ExportTextParseWordDocument from '../../../app/service/text-parse/word-document';
 import ExportTextParseCommonOpenXmlPackage from '../../../app/service/text-parse/common/open-xml-package';
@@ -56,6 +57,7 @@ declare module 'egg' {
       documentParser: AutoInstanceType<typeof ExportTextParseDocumentParser>;
       docxParse: AutoInstanceType<typeof ExportTextParseDocxParse>;
       formatParentWordData: AutoInstanceType<typeof ExportTextParseFormatParentWordData>;
+      test: AutoInstanceType<typeof ExportTextParseTest>;
       utils: AutoInstanceType<typeof ExportTextParseUtils>;
       wordDocument: AutoInstanceType<typeof ExportTextParseWordDocument>;
       common: {

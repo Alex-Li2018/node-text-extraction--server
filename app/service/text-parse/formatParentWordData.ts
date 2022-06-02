@@ -7,7 +7,8 @@ function formatParagraphText(data) {
   (data.children as any[]).forEach(item => {
     let paragraphText = '';
 
-    let queue: any[] = item.children || [];
+    let queue: any[] = [ ...item.children ];
+
 
     while (queue.length !== 0) {
       const node: any = queue.shift();
@@ -26,9 +27,9 @@ export default function formatParentWordData(data: OpenXmlElement) {
   console.log(data);
   let queue: any[] = [];
   let i = 0;
-  queue.push(data);
-
   formatParagraphText(data);
+
+  queue.push(data);
 
   while (queue.length !== 0) {
     const node: any = queue.shift();
