@@ -33,7 +33,7 @@ export default (appInfo: EggAppInfo) => {
   // file模式
   config.multipart = {
     // 模式的不同 获取文件流的方式也不同
-    mode: 'file',
+    mode: 'stream',
     // 覆盖整个白名单，只允许上传 '.docx' 格式
     whitelist: [ '.docx' ],
   };

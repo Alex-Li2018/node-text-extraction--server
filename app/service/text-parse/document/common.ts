@@ -1,4 +1,4 @@
-import { XmlParser } from '../xml/parse/xmlParser';
+import { XmlParser } from '../parser/xml-parser';
 
 export const ns = {
   wordml: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
@@ -8,7 +8,7 @@ export const ns = {
 };
 
 export type LengthType = 'px' | 'pt' | '%' | null;
-export type Length = string | null;
+export type Length = string;
 
 export interface Font {
   name: string;
@@ -16,8 +16,8 @@ export interface Font {
 }
 
 export interface CommonProperties {
-  fontSize: Length;
-  color: string | null;
+  fontSize?: Length;
+  color?: string;
 }
 
 export type LengthUsageType = { mul: number, unit: LengthType };

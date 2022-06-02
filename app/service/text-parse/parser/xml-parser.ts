@@ -4,17 +4,27 @@ import {
   LengthUsageType,
   convertLength,
   convertBoolean,
-} from '../../document/common';
+} from '../document/common';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 
 export function parseXmlString(xmlString: string, trimXmlDeclaration = false): Document {
   if (trimXmlDeclaration) { xmlString = xmlString.replace(/<[?].*[?]>/, ''); }
 
-  const result = new DOMParser().parseFromString(xmlString, 'application/xml');
-  const errorText = hasXmlParserError(result);
+  try {
+    const result = new JSDOM(xmlString, {
+      contentType: 'application/xml',
+    });
+    const errorText = hasXmlParserError(result?.window?.document);
 
-  if (errorText) { throw new Error(errorText); }
+    if (errorText) { throw new Error(errorText); }
 
-  return result;
+    return result?.window?.document;
+  } catch (err) {
+    throw new Error(err as string);
+  }
 }
 
 function hasXmlParserError(doc: Document) {
@@ -26,15 +36,14 @@ export function serializeXmlString(elem: Node): string {
 }
 
 export class XmlParser {
-  elements(elem: Element, localName = ''): Element[] {
-    // 向数组里添加数据时，必须要先定义元素的类型
-    const result: Array<any> = [];
+  elements(elem: Element, localName: string = null!): Element[] {
+    const result: Element[] = [];
 
     for (let i = 0, l = elem.childNodes.length; i < l; i++) {
       const c = elem.childNodes.item(i);
       // 找到元素节点
       if (c.nodeType === 1 && (localName == null || (c as Element).localName === localName)) {
-        result.push(c);
+        result.push(c as Element);
       }
     }
 
@@ -51,43 +60,43 @@ export class XmlParser {
     return null;
   }
 
-  elementAttr(elem: Element, localName: string, attrLocalName: string): string | undefined | null {
+  elementAttr(elem: Element, localName: string, attrLocalName: string): string {
     const el = this.element(elem, localName);
-    return el ? this.attr(el, attrLocalName) : undefined;
+    return el ? this.attr(el, attrLocalName) : '';
   }
 
   // 获取XML元素上的属性
-  attr(elem: Element, localName: string): string | null {
+  attr(elem: Element, localName: string): string {
     for (let i = 0, l = elem.attributes.length; i < l; i++) {
       const a = elem.attributes.item(i);
 
       if (a?.localName === localName) { return a.value; }
     }
 
-    return null;
+    return '';
   }
 
-  intAttr(node: Element, attrName: string, defaultValue = 0): number {
+  intAttr(node: Element, attrName: string, defaultValue: number = null!): number {
     const val = this.attr(node, attrName);
     return val ? parseInt(val) : defaultValue;
   }
 
-  hexAttr(node: Element, attrName: string, defaultValue = 0): number {
+  hexAttr(node: Element, attrName: string, defaultValue: number = null!): number {
     const val = this.attr(node, attrName);
     return val ? parseInt(val, 16) : defaultValue;
   }
 
-  floatAttr(node: Element, attrName: string, defaultValue = 0): number {
+  floatAttr(node: Element, attrName: string, defaultValue: number = null!): number {
     const val = this.attr(node, attrName);
     return val ? parseFloat(val) : defaultValue;
   }
 
-  boolAttr(node: Element, attrName: string, defaultValue = false) {
-    return this.attr(node, attrName) ? convertBoolean((this.attr(node, attrName)) as string, defaultValue) : null;
+  boolAttr(node: Element, attrName: string, defaultValue: boolean = null!) {
+    return convertBoolean(this.attr(node, attrName), defaultValue);
   }
 
   lengthAttr(node: Element, attrName: string, usage: LengthUsageType = LengthUsage.Dxa): Length {
-    return this.attr(node, attrName) ? convertLength(this.attr(node, attrName) as string, usage) : null;
+    return convertLength(this.attr(node, attrName), usage);
   }
 }
 

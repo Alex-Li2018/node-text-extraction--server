@@ -1,4 +1,4 @@
-const { Controller } = require('egg');
+import { Controller } from 'egg';
 
 /**
  * 定义http状态码

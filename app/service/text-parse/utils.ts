@@ -4,10 +4,8 @@ export function escapeClassName(className: string) {
 
 export function splitPath(path: string): [string, string] {
   const si = path.lastIndexOf('/') + 1;
-  // eslint-disable-next-line eqeqeq
-  const folder = si == 0 ? '' : path.substring(0, si);
-  // eslint-disable-next-line eqeqeq
-  const fileName = si == 0 ? path : path.substring(si);
+  const folder = si === 0 ? '' : path.substring(0, si);
+  const fileName = si === 0 ? path : path.substring(si);
 
   return [ folder, fileName ];
 }

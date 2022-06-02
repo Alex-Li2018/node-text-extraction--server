@@ -8,7 +8,7 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-node-text--extraction--server",
+    "start": "egg-scripts start --port=9000 --title=egg-server-node-text--extraction--server",
     "stop": "egg-scripts stop --title=egg-server-node-text--extraction--server",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
@@ -25,7 +25,10 @@
     "egg": "^2.6.1",
     "egg-router-plus": "^2.0.0",
     "egg-scripts": "^2.6.0",
-    "jszip": "^3.9.1"
+    "jsdom": "^19.0.0",
+    "jszip": "^3.9.1",
+    "stream-to-blob": "^2.0.1",
+    "xmlserializer": "^0.6.1"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
