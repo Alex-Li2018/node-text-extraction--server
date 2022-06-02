@@ -40,7 +40,7 @@ Docx reading Server, Easily generate **.docx structure data**  with JS/TS. Works
                 "path": {}
             },
             {
-                // 主体
+                // 主题
                 "type": "themePart",
                 "props": {},
                 "path": {}
