@@ -7,7 +7,7 @@ export default class HomeController extends Controller {
     const file = ctx.request.files[0];
     let result;
     try {
-      // 处理文件，比如上传到云端
+      // 处理文件
       result = await ctx.service.wordParse.parse(file.filepath);
     } finally {
       // 需要删除临时文件
