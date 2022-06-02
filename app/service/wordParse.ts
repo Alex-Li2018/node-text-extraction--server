@@ -1,5 +1,5 @@
 import { Service } from 'egg';
-import { praseAsync } from './text-extraction/docx-parse';
+import { praseAsync } from './text-parse/docx-parse';
 import * as fs from 'fs';
 
 class WordParseService extends Service {

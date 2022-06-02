@@ -1,10 +1,37 @@
-import { Part } from '../common/part';
-import { ExtendedPropsDeclaration, parseExtendedProps } from './extended-props';
+import { serializeXmlString } from '../parser/xml-parser';
+import { OpenXmlPackage } from './open-xml-package';
+import { Relationship } from './relationship';
 
-export class ExtendedPropsPart extends Part {
-  props: ExtendedPropsDeclaration;
+export class Part {
+  protected _xmlDocument: Document;
 
-  parseXml(root: Element) {
-    this.props = parseExtendedProps(root, this._package.xmlParser);
+  rels: Relationship[];
+
+  constructor(protected _package: OpenXmlPackage, public path: string) {
+  }
+
+  load(): Promise<any> {
+    return Promise.all([
+      this._package.loadRelationships(this.path).then(rels => {
+        this.rels = rels;
+      }),
+      this._package.load(this.path).then(text => {
+        const xmlDoc = this._package.parseXmlDocument(text);
+
+        if (this._package.options.keepOrigin) {
+          this._xmlDocument = xmlDoc;
+        }
+        // 解析对应文件里的xml字符串
+        xmlDoc.firstElementChild && this.parseXml(xmlDoc.firstElementChild);
+      }),
+    ]);
+  }
+
+  save() {
+    this._package.update(this.path, serializeXmlString(this._xmlDocument));
+  }
+
+  protected parseXml(root: Element) {
+    console.log(root);
   }
 }

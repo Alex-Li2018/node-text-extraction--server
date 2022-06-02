@@ -1,62 +1,38 @@
 import { XmlParser } from '../parser/xml-parser';
 
-export interface ExtendedPropsDeclaration {
-  template: string,
-  totalTime: number,
-  pages: number | null,
-  words: number | null,
-  characters: number | null,
-  application: string,
-  lines: number | null,
-  paragraphs: number | null,
-  company: string,
-  appVersion: string
+export interface Relationship {
+  id: string,
+  type: RelationshipTypes | string,
+  target: string
+  targetMode: '' | string
 }
 
-// doc app.xml 包含字数 篇幅 行数 公司 版本
-export function parseExtendedProps(root: Element, xmlParser: XmlParser): ExtendedPropsDeclaration {
-  const result = <ExtendedPropsDeclaration>{
-
-  };
-
-  for (const el of xmlParser.elements(root)) {
-    switch (el.localName) {
-      case 'Template':
-        result.template = el.textContent || '';
-        break;
-      case 'Pages':
-        result.pages = safeParseToInt(el.textContent);
-        break;
-      case 'Words':
-        result.words = safeParseToInt(el.textContent);
-        break;
-      case 'Characters':
-        result.characters = safeParseToInt(el.textContent);
-        break;
-      case 'Application':
-        result.application = el.textContent || '';
-        break;
-      case 'Lines':
-        result.lines = safeParseToInt(el.textContent);
-        break;
-      case 'Paragraphs':
-        result.paragraphs = safeParseToInt(el.textContent);
-        break;
-      case 'Company':
-        result.company = el.textContent || '';
-        break;
-      case 'AppVersion':
-        result.appVersion = el.textContent || '';
-        break;
-      default: break;
-    }
-  }
-
-  return result;
+export enum RelationshipTypes {
+  OfficeDocument = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument',
+  FontTable = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable',
+  Image = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/image',
+  Numbering = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering',
+  Styles = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles',
+  StylesWithEffects = 'http://schemas.microsoft.com/office/2007/relationships/stylesWithEffects',
+  Theme = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme',
+  Settings = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings',
+  WebSettings = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/webSettings',
+  Hyperlink = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink',
+  Footnotes = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footnotes',
+  Endnotes = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/endnotes',
+  Footer = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer',
+  Header = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/header',
+  ExtendedProperties = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties',
+  CoreProperties = 'http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties',
+  CustomProperties = 'http://schemas.openxmlformats.org/package/2006/relationships/metadata/custom-properties',
 }
 
-function safeParseToInt(value: string | undefined | null): number | null {
-  if (typeof value === 'undefined') { return null; }
-  if (value === null) { return null; }
-  return parseInt(value);
+export function parseRelationships(root: Element, xml: XmlParser): Relationship[] {
+  // 找到relationships的子元素
+  return xml.elements(root).map(e => <Relationship>{
+    id: xml.attr(e, 'Id'),
+    type: xml.attr(e, 'Type'),
+    target: xml.attr(e, 'Target'),
+    targetMode: xml.attr(e, 'TargetMode'),
+  });
 }

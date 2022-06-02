@@ -1,19 +1,17 @@
 import { DomType, OpenXmlElement } from '../document/dom';
 
-export abstract class WmlBaseNote implements OpenXmlElement {
-  id: string;
-  type: DomType;
-  noteType: string;
+export class WmlHeader implements OpenXmlElement {
+  type: DomType = DomType.Header;
   children?: OpenXmlElement[] = [];
   cssStyle?: Record<string, string> = {};
   className?: string;
   parent?: OpenXmlElement;
 }
 
-export class WmlFootnote extends WmlBaseNote {
-  type = DomType.Footnote;
-}
-
-export class WmlEndnote extends WmlBaseNote {
-  type = DomType.Endnote;
+export class WmlFooter implements OpenXmlElement {
+  type: DomType = DomType.Footer;
+  children?: OpenXmlElement[] = [];
+  cssStyle?: Record<string, string> = {};
+  className?: string;
+  parent?: OpenXmlElement;
 }
