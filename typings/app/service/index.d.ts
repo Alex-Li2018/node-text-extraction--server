@@ -11,7 +11,7 @@ import ExportTextParseDocumentParser from '../../../app/service/text-parse/docum
 import ExportTextParseDocxParse from '../../../app/service/text-parse/docx-parse';
 import ExportTextParseFormatParentWordData from '../../../app/service/text-parse/formatParentWordData';
 import ExportTextParseUtils from '../../../app/service/text-parse/utils';
-import ExportTextParseWordDocumnet from '../../../app/service/text-parse/word-document';
+import ExportTextParseWordDocument from '../../../app/service/text-parse/word-document';
 import ExportTextParseCommonOpenXmlPackage from '../../../app/service/text-parse/common/open-xml-package';
 import ExportTextParseCommonPart from '../../../app/service/text-parse/common/part';
 import ExportTextParseCommonRelationship from '../../../app/service/text-parse/common/relationship';
@@ -43,8 +43,8 @@ import ExportTextParseNotesParts from '../../../app/service/text-parse/notes/par
 import ExportTextParseNumberingNumberingPart from '../../../app/service/text-parse/numbering/numbering-part';
 import ExportTextParseNumberingNumbering from '../../../app/service/text-parse/numbering/numbering';
 import ExportTextParseParserXmlParser from '../../../app/service/text-parse/parser/xml-parser';
-import ExportTextParseSettingSettingsPart from '../../../app/service/text-parse/settings/settings-part';
-import ExportTextParseSettingSettings from '../../../app/service/text-parse/settings/settings';
+import ExportTextParseSettingsSettingsPart from '../../../app/service/text-parse/settings/settings-part';
+import ExportTextParseSettingsSettings from '../../../app/service/text-parse/settings/settings';
 import ExportTextParseStylesStylesPart from '../../../app/service/text-parse/styles/styles-part';
 import ExportTextParseThemeThemePart from '../../../app/service/text-parse/theme/theme-part';
 import ExportTextParseThemeTheme from '../../../app/service/text-parse/theme/theme';
@@ -57,7 +57,7 @@ declare module 'egg' {
       docxParse: AutoInstanceType<typeof ExportTextParseDocxParse>;
       formatParentWordData: AutoInstanceType<typeof ExportTextParseFormatParentWordData>;
       utils: AutoInstanceType<typeof ExportTextParseUtils>;
-      wordDocumnet: AutoInstanceType<typeof ExportTextParseWordDocumnet>;
+      wordDocument: AutoInstanceType<typeof ExportTextParseWordDocument>;
       common: {
         openXmlPackage: AutoInstanceType<typeof ExportTextParseCommonOpenXmlPackage>;
         part: AutoInstanceType<typeof ExportTextParseCommonPart>;
@@ -105,9 +105,9 @@ declare module 'egg' {
       parser: {
         xmlParser: AutoInstanceType<typeof ExportTextParseParserXmlParser>;
       }
-      setting: {
-        settingsPart: AutoInstanceType<typeof ExportTextParseSettingSettingsPart>;
-        settings: AutoInstanceType<typeof ExportTextParseSettingSettings>;
+      settings: {
+        settingsPart: AutoInstanceType<typeof ExportTextParseSettingsSettingsPart>;
+        settings: AutoInstanceType<typeof ExportTextParseSettingsSettings>;
       }
       styles: {
         stylesPart: AutoInstanceType<typeof ExportTextParseStylesStylesPart>;
