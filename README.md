@@ -1,6 +1,6 @@
 # NODE-TEXT-EXTRACTION-SERVER
 
-Docx reading Server, Easily generate **.docx** files with JS/TS. Works for Node.
+Docx reading Server, Easily generate **.docx structure data**  with JS/TS. Works for Node.
 
 ## structure data
 ```json
@@ -40,7 +40,7 @@ Docx reading Server, Easily generate **.docx** files with JS/TS. Works for Node.
                 "path": {}
             },
             {
-                // 主体
+                // 主题
                 "type": "themePart",
                 "props": {},
                 "path": {}
