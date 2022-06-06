@@ -24,7 +24,6 @@ function formatParagraphText(data) {
 }
 
 export default function formatParentWordData(data: OpenXmlElement) {
-  console.log(data);
   let queue: any[] = [];
   let i = 0;
   formatParagraphText(data);

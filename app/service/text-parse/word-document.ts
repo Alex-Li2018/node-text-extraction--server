@@ -234,7 +234,9 @@ export class WordDocument {
     this.parts.push(part);
 
     return part.load().then(() => {
-      if (part?.rels === null || part?.rels?.length === 0 || part?.path) { return part; }
+      if (part?.rels === null || part?.rels?.length === 0) {
+        return part;
+      }
 
       const [ folder ] = splitPath(part?.path as string);
       const rels = part?.rels.map(rel => {
