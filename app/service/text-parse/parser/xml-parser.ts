@@ -15,7 +15,7 @@ export function parseXmlString(xmlString: string, trimXmlDeclaration = false): D
 
   try {
     const result = new JSDOM(xmlString, {
-      contentType: 'application/xml',
+      contentType: 'text/html',
     });
     const errorText = hasXmlParserError(result?.window?.document);
 

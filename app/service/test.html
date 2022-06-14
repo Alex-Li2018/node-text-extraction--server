@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            value: 1,
+            children: [
+                {
+                    value: 2,
+                    children: [
+                        {
+                            value: 3
+                        },
+                        {
+                            value: 4
+                        },
+                    ]
+                },
+                {
+                    value: 5,
+                },
+                {
+                    value: 6,
+                    children: [
+                        {
+                            value: 7,
+                            children: [
+                                {
+                                    value: 8
+                                },
+                                {
+                                    value: 9
+                                }
+                            ]
+                        },
+                        {
+                            value: 10,
+                        }
+                    ]
+                }
+            ]
+        }
+
+        function traverseDomTree(val) {
+            const arr = []
+            const newArr = []
+            let i = 1
+
+            arr.push(val)
+
+            while(arr.length !== 0) {
+                const node = arr.shift()
+
+                if (node.children && node.children.length > 0) {
+                    node.id = i 
+                    i += 1
+                    arr.push(...node.children)
+                    console.log('node children', node.value)
+                } else {
+                    node.id = i
+                    newArr.push({
+                        id: i,
+                        value: node.value,
+                    })
+                    i += 1
+
+                    console.log('node', node.value)
+                }
+            }
+        }
+
+        traverseDomTree(obj)
+    </script>
+</body>
+</html>

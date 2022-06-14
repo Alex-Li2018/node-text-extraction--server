@@ -6,6 +6,7 @@ type AnyClass = new (...args: any[]) => any;
 type AnyFunc<T = any> = (...args: any[]) => T;
 type CanExportFunc = AnyFunc<Promise<any>> | AnyFunc<IterableIterator<any>>;
 type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? ReturnType<T> : T> = U extends AnyClass ? InstanceType<U> : U;
+import ExportHtmlParse from '../../../app/service/htmlParse';
 import ExportWordParse from '../../../app/service/wordParse';
 import ExportTextParseDocumentParser from '../../../app/service/text-parse/document-parser';
 import ExportTextParseDocxParse from '../../../app/service/text-parse/docx-parse';
@@ -52,6 +53,7 @@ import ExportTextParseThemeTheme from '../../../app/service/text-parse/theme/the
 
 declare module 'egg' {
   interface IService {
+    htmlParse: AutoInstanceType<typeof ExportHtmlParse>;
     wordParse: AutoInstanceType<typeof ExportWordParse>;
     textParse: {
       documentParser: AutoInstanceType<typeof ExportTextParseDocumentParser>;

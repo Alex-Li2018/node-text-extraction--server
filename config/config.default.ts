@@ -35,7 +35,7 @@ export default (appInfo: EggAppInfo) => {
     // 模式的不同 获取文件流的方式也不同
     mode: 'file',
     // 覆盖整个白名单，只允许上传 '.docx' 格式
-    whitelist: [ '.docx' ],
+    whitelist: [ '.docx', '.html' ],
   };
 
   // the return config will combines to EggAppConfig

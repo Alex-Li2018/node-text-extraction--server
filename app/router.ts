@@ -8,4 +8,5 @@ export default (app: Application) => {
 
 
   apiV1Router.post('/docx-parser', controller.home.index);
+  apiV1Router.post('/html-parser', controller.home.htmlParse);
 };
