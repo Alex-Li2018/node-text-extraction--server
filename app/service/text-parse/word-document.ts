@@ -1,6 +1,6 @@
 import { OutputType } from 'jszip';
 
-import formatParentWordData from './formatParentWordData';
+import { formatParagraphText } from './formatParentWordData';
 import { DocumentParser } from './document-parser';
 import { Relationship, RelationshipTypes } from './common/relationship';
 import { Part } from './common/part';
@@ -95,7 +95,7 @@ export class WordDocument {
 
     word.documentPart && arr.push({
       type: 'documentPart',
-      body: formatParentWordData(word.documentPart?.body),
+      body: formatParagraphText(word.documentPart?.body),
       path: word.documentPart?.path,
       // rels: word.documentPart?.rels,
     });

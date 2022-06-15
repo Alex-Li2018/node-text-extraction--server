@@ -1,7 +1,7 @@
 // 处理parent循环引用的问题
 import { OpenXmlElement } from './document/dom';
 
-function formatParagraphText(data) {
+export function formatParagraphText(data) {
   if (!data.children) return;
 
   (data.children as any[]).forEach(item => {
