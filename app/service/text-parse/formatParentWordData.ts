@@ -15,6 +15,9 @@ export function formatParagraphText(data) {
 
       if (node.children && node.children.length > 0) {
         queue = queue.concat(node.children);
+        if (node.parent) {
+          node.parent = null;
+        }
       } else {
         paragraphText += node.text;
       }
@@ -23,9 +26,8 @@ export function formatParagraphText(data) {
   });
 }
 
-export default function formatParentWordData(data: OpenXmlElement) {
+export function formatParentWordData(data: OpenXmlElement) {
   let queue: any[] = [];
-  let i = 0;
   formatParagraphText(data);
 
   queue.push(data);
@@ -34,15 +36,10 @@ export default function formatParentWordData(data: OpenXmlElement) {
     const node: any = queue.shift();
     if (node.children && node.children.length > 0) {
       queue = queue.concat(node.children);
-      i++;
-      node.id = i;
+
       if (node.parent) {
-        node.parent_id = node.parent.id;
         node.parent = null;
       }
-    } else {
-      i++;
-      node.id = i;
     }
   }
 
