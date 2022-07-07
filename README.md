@@ -128,6 +128,7 @@ Docx reading Server, Easily generate **.docx structure data**  with JS/TS. Works
 - [mammoth.js](https://github.com/mwilliamson/mammoth.js)
 - [Open-XML-SDK](https://github.com/OfficeDev/Open-XML-SDK)
 - [OOXML](http://officeopenxml.com/)
+- **[OOXML](http://officeopenxml.com/anatomyofOOXML.php)**
 
 ## QuickStart
 
